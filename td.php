@@ -398,4 +398,102 @@ sleepLastWeek(7,8,5,9,5,6,8)."\n\n"; // heures par jour de la semaine en argumen
 echo "\n";
 echo "\n";
 
+/************************************/
+
+// ex 15 en utlisant 4 fonctions :
+function getSleepHours($day){ // On met les valeurs en dur, pour un user, on pourra utiliser un formulaire qui remplacera chaque return 
+  
+  switch($day) {
+  case 'monday' :
+    return 2;
+    break; 
+    case 'tuesday' :
+    return 5;
+    break; 
+    case 'wednesday' :
+    return 3;
+    break; 
+    case 'thursday' :
+    return 8;
+    break; 
+    case 'friday' :
+    return 8;
+    break; 
+    case 'saturday' :
+    return 10;
+    break; 
+    case 'sunday' :
+    return 2;
+    break; 
+    default:
+    return 'ERROR';
+}};
+
+
+function getActualSleepHours() {
+  return getSleepHours ('monday') 
+   + getSleepHours ('tuesday')
+   + getSleepHours ('wednesday')
+   + getSleepHours ('thursday')
+   + getSleepHours ('friday')
+   + getSleepHours ('saturday')
+   + getSleepHours ('sunday')
+;}
+
+function getIdealSleepHours() {
+  $idealHours = 8;
+  return $idealHours * 7;
+ };
+
+function calculateSleepDebt() {
+  
+  $actualSleepHours = getActualSleepHours();
+  $idealSleepHours = getIdealSleepHours();
+
+  if ( $actualSleepHours === $idealSleepHours) {
+    echo ("Vous avez parfaitement bien dormi");
+  } else if 
+   ( $actualSleepHours < $idealSleepHours ) {
+     echo ("Vous n'avez pas assez dormi de " . ( $idealSleepHours - $actualSleepHours ) . " heures");
+   }
+   else if 
+   ( $actualSleepHours > $idealSleepHours ) {
+     echo("Vous avez trop dormi de " . ($actualSleepHours - $idealSleepHours ) . " heures");
+   }
+   else {
+     echo("ERROR CHECK TON CODE !");
+   }
+   }
+
+calculateSleepDebt();
+
+echo "\n";
+echo "\n";
+
+
+/**********************REWORK: Exercice 14 :Créer une fonction qui renvoie le nombres de voyelles dans une chaîne de caractère. Nous considérerons a, e, i, o, u comme voyelles sans le y .*/ 
+
+function countVowels($string) {
+
+  $string = str_split(strtolower($string));
+  $count = 0;
+  
+
+  foreach ($string as $vowel) {
+
+    if ($vowel === "a"
+    || $vowel === "e"
+    || $vowel === "i"
+    || $vowel === "o"
+    || $vowel === "u") {
+
+      $count++;
+    }
+  }
+  echo $count;
+}
+
+countVowels("azertyu");
+
+
 ?>
